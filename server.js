@@ -6,10 +6,6 @@ const axios = require("axios");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-// Enable static file serving
-app.use(express.static(__dirname + "/"));
-
 // Enable CORS
 app.use(cors());
 
@@ -41,20 +37,8 @@ app.get("/recommendations", async (req, res) => {
   }
 });
 
-// Optional HTTPS Setup (uncomment if you have SSL certificate and key)
-// const server = https.createServer({
-//   key: fs.readFileSync("path/to/private.key"),
-//   cert: fs.readFileSync("path/to/certificate.crt")
-// }, app);
-
-// server.listen(PORT, () => {
-//   console.log(`Secure server running on port ${PORT}`);
-// });
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/../frontend/mini.html");
-});
-
 // Fallback HTTP Server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
